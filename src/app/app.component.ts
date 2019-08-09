@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Timestamp} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-udemy';
+  showDetails = false;
+  toggleCount = 0;
+  toggleTimestamps = [];
+
+  onToggleDetails() {
+    this.showDetails = !this.showDetails;
+    this.toggleTimestamps.push(Date());
+    this.toggleCount++;
+  }
+
+  getColor(index: number) {
+    return index > 4 ? 'darkblue' : 'white';
+  }
+
+  getToggleStatusString() {
+    return this.showDetails ? 'shown' : 'hidden';
+  }
 }
