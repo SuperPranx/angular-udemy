@@ -6,10 +6,6 @@ import {Recipe} from '../recipe.model';
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.css']
 })
-export class RecipeDetailComponent implements OnInit {
+export class RecipeDetailComponent {
   @Input() recipe: Recipe;
-
-  ngOnInit() {
-    this.recipe = new Recipe('No recipe selected', '', '');
-  }
 }
