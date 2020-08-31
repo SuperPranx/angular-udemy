@@ -13,7 +13,7 @@ import {
 export class BetterHighlightDirective implements OnInit {
   @Input('appBetterHighlight') highlightColor = 'blue';
   @HostBinding('style.backgroundColor') backgroundColor: string;
-  private readonly defaultColor = 'transparent';
+  @Input() defaultColor = 'transparent';
 
   constructor(private elementRef: ElementRef,
               private renderer: Renderer2) { }
