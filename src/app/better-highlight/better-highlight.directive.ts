@@ -11,9 +11,9 @@ import {
   selector: '[appBetterHighlight]'
 })
 export class BetterHighlightDirective implements OnInit {
-  @Input() defaultColor = 'transparent';
-  @Input() highlightColor = 'blue';
+  @Input('appBetterHighlight') highlightColor = 'blue';
   @HostBinding('style.backgroundColor') backgroundColor: string;
+  private readonly defaultColor = 'transparent';
 
   constructor(private elementRef: ElementRef,
               private renderer: Renderer2) { }
