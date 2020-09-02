@@ -16,6 +16,7 @@ export class ServerComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(+this.activatedRoute.snapshot.params.id);
     this.server = this.serversService.getServer(+this.activatedRoute.snapshot.params.id);
     this.activatedRoute.params.subscribe(
       (params: Params) => this.server = this.serversService.getServer(+this.activatedRoute.snapshot.params.id)
@@ -23,6 +24,7 @@ export class ServerComponent implements OnInit {
   }
 
   onEdit() {
+    console.log(+this.activatedRoute.snapshot.params.id);
     this.router.navigate(['edit'], {relativeTo: this.activatedRoute, queryParamsHandling: 'preserve'});
   }
 }
