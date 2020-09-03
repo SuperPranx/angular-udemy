@@ -11,7 +11,8 @@ const appRoutes: Routes = [
   {path: 'recipes', component: RecipeBookComponent,
     children: [
       {path: ':id', component: RecipeDetailComponent},
-      {path: ':id/edit', component: RecipeEditComponent},
+      {path: ':id/edit', component: RecipeEditComponent, data: {isNewRecipe: false}},
+      {path: 'new', component: RecipeEditComponent, data: {isNewRecipe: true}},
       {path: '**', component: NoRecipeSelectedComponent}
     ]
   },
