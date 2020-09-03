@@ -1,6 +1,7 @@
 import {EventEmitter} from '@angular/core';
 import {Recipe} from './recipe.model';
 import {Ingredient} from '../shared/ingredient.model';
+import cloneDeep from 'lodash/cloneDeep';
 
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
@@ -37,7 +38,7 @@ export class RecipeService {
 
   findRecipe(recipeId: number): Recipe | null | undefined {
     if (this.isValidRecipeId(recipeId)) {
-      return this.recipes.find(recipe => recipe.id === recipeId);
+      return cloneDeep(this.recipes.find(recipe => recipe.id === recipeId));
     } else {
       return null;
     }
