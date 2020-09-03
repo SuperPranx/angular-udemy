@@ -1,0 +1,4 @@
+<h3 *ngIf="recipe; else noValidRecipe">Edit your recipe here!</h3>
+<ng-template #noValidRecipe>
+  <h3>Recipe for editing is not valid!</h3>
+</ng-template>

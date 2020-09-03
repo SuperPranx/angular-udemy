@@ -1,26 +1,22 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Recipe} from '../recipe.model';
 import {ShoppingListService} from '../../shopping-list/shopping-list.service';
-import {Ingredient} from '../../shared/ingredient.model';
-import {ActivatedRoute} from '@angular/router';
 import {RecipeService} from '../recipe.service';
+import {ActivatedRoute} from '@angular/router';
+import {Ingredient} from '../../shared/ingredient.model';
 
 @Component({
-  selector: 'app-recipe-detail',
-  templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css']
+  selector: 'app-recipe-edit',
+  templateUrl: './recipe-edit.component.html',
+  styleUrls: ['./recipe-edit.component.css']
 })
-export class RecipeDetailComponent implements OnInit {
+export class RecipeEditComponent implements OnInit {
   recipe: Recipe;
 
   constructor(
     private shoppingListService: ShoppingListService,
     private recipeService: RecipeService,
     private route: ActivatedRoute) { }
-
-  addToShoppingList(ingredients: Ingredient[]) {
-    this.shoppingListService.addIngredients(ingredients);
-  }
 
   ngOnInit() {
     this.recipe = this.recipeService.findRecipe(+this.route.snapshot.params.id);

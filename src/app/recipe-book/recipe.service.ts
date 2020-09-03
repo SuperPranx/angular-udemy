@@ -10,6 +10,7 @@ export class RecipeService {
 
   private recipes: Recipe[] = [
     new Recipe(
+      1,
       'A Test Recipe 01 (Pizza)',
       'A tasty test pizza',
       'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg',
@@ -20,6 +21,7 @@ export class RecipeService {
         new Ingredient('Pepperoni', 150)
       ]),
     new Recipe(
+      2,
       'A Test Recipe 02 (Chicken Soup)',
       'A tasty test soup',
       'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg',
@@ -31,5 +33,18 @@ export class RecipeService {
 
   getRecipes(): Recipe[] {
     return this.recipes.slice();
+  }
+
+  findRecipe(recipeId: number): Recipe | null | undefined {
+    if (this.isValidRecipeId(recipeId)) {
+      return this.recipes.find(recipe => recipe.id === recipeId);
+    } else {
+      return null;
+    }
+  }
+
+  public isValidRecipeId(recipeId: number): boolean {
+    return recipeId !== undefined
+      && typeof(recipeId) === 'number';
   }
 }
