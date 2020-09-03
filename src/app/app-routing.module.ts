@@ -10,9 +10,9 @@ const appRoutes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'recipes', component: RecipeBookComponent,
     children: [
+      {path: 'new', component: RecipeEditComponent, data: {isNewRecipe: true}},
       {path: ':id', component: RecipeDetailComponent},
       {path: ':id/edit', component: RecipeEditComponent, data: {isNewRecipe: false}},
-      {path: 'new', component: RecipeEditComponent, data: {isNewRecipe: true}},
       {path: '**', component: NoRecipeSelectedComponent}
     ]
   },

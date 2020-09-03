@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class RecipeEditComponent implements OnInit {
   recipe: Recipe;
+  isNewRecipe: boolean;
 
   constructor(
     private shoppingListService: ShoppingListService,
@@ -18,12 +19,19 @@ export class RecipeEditComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.recipe = this.recipeService.findRecipe(+this.route.snapshot.params.id);
+    this.performDataUpdate();
 
     this.route.params.subscribe(
       params => {
-        this.recipe = this.recipeService.findRecipe(+this.route.snapshot.params.id);
+        this.performDataUpdate();
       }
     );
+  }
+
+  private performDataUpdate() {
+    this.isNewRecipe = this.route.snapshot.data.isNewRecipe;
+    if (!this.isNewRecipe) {
+      this.recipe = this.recipeService.findRecipe(+this.route.snapshot.params.id);
+    }
   }
 }
