@@ -3,7 +3,6 @@ import {Recipe} from '../recipe.model';
 import {ShoppingListService} from '../../shopping-list/shopping-list.service';
 import {RecipeService} from '../recipe.service';
 import {ActivatedRoute} from '@angular/router';
-import {Ingredient} from '../../shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-edit',
