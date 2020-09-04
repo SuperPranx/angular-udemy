@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Observer, Subscription} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
         count++;
       }, 1000);
-    }).pipe(map(countNumber => 'Round: ' + (countNumber + 1)));
+    }).pipe(filter(countNumber => countNumber > 0), map(countNumber => 'Round: ' + (countNumber + 1)));
 
     this.counter = customIntervalObservable.subscribe(
       count => console.log(count),
