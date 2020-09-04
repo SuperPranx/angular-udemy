@@ -1,11 +1,12 @@
-import {EventEmitter} from '@angular/core';
 import {Recipe} from './recipe.model';
 import {Ingredient} from '../shared/ingredient.model';
-import cloneDeep from 'lodash/cloneDeep';
+import {cloneDeep} from 'lodash';
+import {Injectable} from '@angular/core';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
-
   constructor() {
   }
 
