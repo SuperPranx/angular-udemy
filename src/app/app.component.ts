@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {NgForm, NgModel} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,8 @@ import {NgForm} from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild('formElement') formElement: NgForm;
+  @ViewChild('email') email: NgModel;
   username: string;
-  email: string;
   secret: string;
 
   suggestUserName() {
