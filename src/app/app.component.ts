@@ -9,6 +9,7 @@ import {NgForm, NgModel} from '@angular/forms';
 export class AppComponent {
   @ViewChild('formElement') formElement: NgForm;
   @ViewChild('email') email: NgModel;
+  defaultQuestion = 'pet';
   username: string;
   secret: string;
 
