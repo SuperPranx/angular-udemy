@@ -12,6 +12,15 @@ export class AppComponent {
   defaultQuestion = 'pet';
   answer: string;
   genders = ['male', 'female'];
+  submitted = false;
+
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    answer: '',
+    gender: ''
+  };
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -26,12 +35,17 @@ export class AppComponent {
     // });
     this.formElement.form.patchValue({
       userData: {
-        username: 'newSuggestion'
+        username: suggestedName
       }
     });
   }
 
   onSubmit() {
-    console.log(this.formElement);
+    this.submitted = true;
+    this.user.username = this.formElement.value.userData.username;
+    this.user.email = this.formElement.value.userData.email;
+    this.user.secretQuestion = this.formElement.value.secret;
+    this.user.answer = this.formElement.value.questionAnswer;
+    this.user.gender = this.formElement.value.gender;
   }
 }
