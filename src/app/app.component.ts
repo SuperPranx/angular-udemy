@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -8,15 +8,17 @@ import {NgForm} from '@angular/forms';
 })
 export class AppComponent {
   readonly subscriptionTypes = ['Basic', 'Advanced', 'Pro'];
+  @ViewChild('formElement') formElement: NgForm;
+
   formData: {
     email: '',
     subType: '',
     password: ''
   };
 
-  handleSubmission(form: NgForm) {
-    this.formData = form.value.formData;
+  handleSubmission() {
+    this.formData = this.formElement.value.formData;
     console.log(this.formData);
-    form.reset();
+    this.formElement.reset();
   }
 }

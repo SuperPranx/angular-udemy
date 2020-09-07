@@ -1,30 +1,39 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="handleSubmission(formElement)" #formElement="ngForm">
+      <form (ngSubmit)="handleSubmission()" #formElement="ngForm">
         <div ngModelGroup="formData" #formData="ngModelGroup">
           <div>
             <label>
               E-Mail:
-              <input class="form-control" name="email" ngModel required email/>
+              <input class="form-control" name="email" ngModel required email #email="ngModel"/>
             </label>
+            <div class="help-block" *ngIf="!email.valid && email.touched">
+              Please enter a valid email!
+            </div>
           </div>
           <div>
             <label>
               Subscription type:
-              <select class="form-control" name="subType" ngModel required>
+              <select class="form-control" name="subType" ngModel="Advanced" required #subType="ngModel">
                 <option *ngFor="let type of subscriptionTypes">
                   {{type}}
                 </option>
               </select>
             </label>
+            <div class="help-block" *ngIf="!subType.valid && subType.touched">
+              Please enter a valid subscription type!
+            </div>
           </div>
           <label>
             Password:
-            <input class="form-control" name="password" ngModel required/>
+            <input class="form-control" name="password" ngModel required #password="ngModel"/>
           </label>
+          <div class="help-block" *ngIf="!password.valid && password.touched">
+            Please enter a valid password!
+          </div>
           <div>
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" [disabled]="!formData.valid">Submit</button>
           </div>
         </div>
       </form>
