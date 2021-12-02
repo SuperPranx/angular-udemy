@@ -1,0 +1,18 @@
+<form [formGroup]="formGroupObject" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="projectName">Project name: </label>
+        <input type="text" class="form-control" formControlName="projectName" />
+        <label for="projectMail">Project mail: </label>
+        <input type="text" class="form-control" formControlName="projectMail" />
+        <div class="radio" *ngFor="let statz of possibleStatuses">
+            <label>
+                <input type="radio" formControlName="projectStatus" [value]="statz" />{{statz}}
+            </label>
+        </div>
+    </div>
+    <button class="btn btn-primary"
+            type="submit"
+            [style.min-height]="'25px'"
+            [style.background-color]="formGroupObject.valid ? 'lightgreen' : 'lightpink'"
+            [disabled]="!isValid">Submit</button>
+</form>
